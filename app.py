@@ -3,7 +3,6 @@ from flask_cors import CORS  # Importar CORS
 from transformers import M2M100ForConditionalGeneration, M2M100Tokenizer
 from transformers import MarianMTModel, MarianTokenizer
 import torch
-from threading import Thread
 
 
 # Crear la app de Flask
@@ -83,8 +82,7 @@ def predict():
 
 # Ejecutar Flask en un hilo
 def run_flask():
-    app.run(host="0.0.0.0", port=5555)
+    app.run()
 
 # Crear un hilo para ejecutar Flask
-thread = Thread(target=run_flask)
-thread.start()
+run_flask()
